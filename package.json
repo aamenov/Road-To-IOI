@@ -1,0 +1,26 @@
+{
+  "name": "road-to-ioi",
+  "version": "0.1.0.0",
+  "private": true,
+  "description": "Russian-first competitive programming guide for Kazakhstan olympiad students.",
+  "scripts": {
+    "dev": "node node_modules/next/dist/bin/next dev",
+    "build": "bun run validate:content && node node_modules/next/dist/bin/next build",
+    "start": "node node_modules/next/dist/bin/next start",
+    "lint": "bun run typecheck",
+    "qa:smoke": "node scripts/qa-smoke.mjs",
+    "typecheck": "node node_modules/typescript/bin/tsc --noEmit",
+    "validate:content": "bun scripts/validate-content.ts"
+  },
+  "dependencies": {
+    "next": "15.3.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.29",
+    "@types/react": "19.1.6",
+    "@types/react-dom": "19.1.5",
+    "typescript": "5.8.3"
+  }
+}
