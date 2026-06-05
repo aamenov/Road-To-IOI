@@ -1,850 +1,435 @@
-# Design: Road To IOI Russian Guide
+# Design System - Road To IOI
 
-Status: Engineering Reviewed
-Date: 2026-06-04
+Status: Fresh direction, USACO Guide-inspired
+Date: 2026-06-06
 
-## Goal
+## Product Context
 
-Build a Russian-first competitive programming learning website for Kazakhstan school students preparing for olympiads. The first version should be a separately branded derivative of USACO Guide: faithful translated content, preserved depth, and a guided entry layer that helps students choose where to start.
+- **What this is:** A Russian-first competitive programming guide for Kazakhstan school students preparing for olympiads, ICPC-style contests, and IOI-style progression.
+- **Who it is for:** Beginners who need a clear entry point, strong regional/national students who need depth, and teachers running school clubs.
+- **Project type:** Dense learning web app and documentation system, not a marketing site.
+- **Primary reference:** USACO Guide. Match its information architecture, density, dark reading surfaces, progress vocabulary, module navigation, and contest-training seriousness. Do not copy its official branding or imply endorsement.
 
-Kazakh localization should come after the Russian version proves the workflow, terminology, and content structure.
+## Memorable Target
 
-## Users
+Road To IOI should feel like the Russian/Kazakhstan version of a serious olympiad training reference: dark, precise, structured, and deep enough that strong students trust it immediately.
 
-Primary users:
+The first impression should not be "school website." It should be "this is the place where I can systematically train for programming olympiads."
 
-- Kazakhstan school students preparing for programming olympiads.
-- Students who struggle with English explanations even when the algorithmic material is appropriate.
-- Mixed ability learners: some are absolute beginners, while others already compete at regional or national level.
+## Aesthetic Direction
 
-Secondary users:
+- **Direction:** Competitive-programming documentation app.
+- **Decoration level:** Minimal-functional. Structure, color, progress states, and code blocks carry the interface.
+- **Mood:** Serious, technical, calm, and slightly intense.
+- **Density:** High. Pages should be scannable and information-rich, closer to USACO Guide than to a SaaS landing page.
 
-- Teachers and coaches who need a structured Russian-language curriculum.
-- School clubs that need a roadmap from beginner material toward IOI-style training.
+Hard rules:
 
-## Core Problem
-
-USACO Guide already provides a strong competitive programming roadmap, but English is a barrier for many Kazakhstan students. A direct translation helps, but a pure mirror risks losing beginners who do not yet know where they belong in the roadmap.
-
-The product should therefore solve two problems at once:
-
-1. Make high-quality CP explanations understandable in Russian.
-2. Help students of different levels enter the same deep curriculum without feeling misplaced.
-
-## Product Positioning
-
-This is not initially a broad school platform. It is a Russian-language competitive programming guide for Kazakhstan students, based on USACO Guide, with separate branding and transparent attribution.
-
-The site should not present itself as the official USACO Guide unless that relationship is explicitly approved by the original maintainers.
-
-## License And Attribution
-
-USACO Guide is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International. The derivative site must:
-
-- Credit USACO Guide and the Competitive Programming Initiative.
-- Link to the original source repository and license.
-- State that the Russian content is translated/adapted from USACO Guide.
-- Remain non-commercial unless separate permission is obtained.
-- Publish derivative content under the same license.
-- Avoid implying endorsement by USACO Guide or CPI.
-
-This should be visible in the footer and on a dedicated attribution page.
-
-## Chosen Approach
-
-Approach 2: Faithful Translation + Guided Entry.
-
-Translate USACO Guide content faithfully, but add a thin Russian/Kazakhstan-specific onboarding layer:
-
-- "Where should I start?" placement page.
-- Russian glossary for CP terminology.
-- Beginner notes where literal translation would be confusing.
-- Level mapping for school olympiad preparation.
-- Clear tracks for beginner, regional/national, and IOI-style progression.
-
-The main curriculum should preserve USACO Guide's depth so advanced students do not feel constrained.
-
-CEO review mode: Selective Expansion.
-
-Accepted v1 expansions:
-
-- Teacher/coach mode.
-- Kazakhstan Olympiad Map.
-- Translation Quality Pipeline.
-- Local-first progress tracking.
-- Bilingual terminology system.
-
-Deferred:
-
-- Placement diagnostic. Version 1 keeps static guided entry. A quiz-style diagnostic can come after the first translated slice proves value.
-
-## Non-Goals For Version 1
-
-- Do not build a full LMS.
-- Do not add paid courses.
-- Do not rewrite the whole curriculum around Kazakhstan olympiad stages yet.
-- Do not add teacher dashboards before students can use the content.
-- Do not translate Russian and Kazakh simultaneously.
-- Do not create new problem archives unless needed for navigation or local context.
-
-## Version 1 Scope
-
-Version 1 should prove the localization workflow and the student entry experience.
-
-Required:
-
-- Separate brand shell.
-- Attribution and license page.
-- Russian language routing.
-- Faithful translation structure for a small initial content slice.
-- Glossary system for recurring CP terms.
-- Guided entry page that routes students by level.
-- Basic module navigation and reading experience.
-- Teacher/coach page for school club usage.
-- Kazakhstan Olympiad Map.
-- Local-first progress tracking.
-- Bilingual terminology system.
-- Translation quality workflow and module status tracking.
-
-Accepted first content slice:
-
-1. Landing / guide overview.
-2. "Where should I start?" guided entry.
-3. Attribution/license page.
-4. Teacher/coach page.
-5. Kazakhstan Olympiad Map.
-6. Glossary index.
-7. 20-40 glossary terms.
-8. One complete beginner path:
-   - Intro to programming contest workflow.
-   - Time complexity.
-   - Input/output.
-   - Basic problem-solving / simulation.
-   - Loops/arrays review only if USACO source content requires it.
-9. One complete Bronze topic module with problems and solution links.
-
-## Guided Entry Design
-
-The first page should ask students what describes them best:
-
-- I know syntax but cannot solve olympiad problems yet.
-- I can solve easy problems, but I do not know algorithms systematically.
-- I already compete at regional/national level.
-- I want IOI-style preparation.
-
-Each answer should map to a clear first module and explain why that starting point is appropriate.
-
-The language should be serious and school-appropriate, not childish. Beginners need clarity, but strong students should still feel that the site has depth.
+- Use a dark app shell as the default identity.
+- Keep Road To IOI visibly separate from USACO Guide.
+- Never use generic hero gradients, floating blobs, or startup-style feature cards.
+- Do not center everything. Most content should align to a strong grid.
+- Use cards only when they represent actual UI objects: progress panels, resources, modules, path choices, glossary terms.
+- Keep module pages document-like, with side navigation and a right table of contents on desktop.
+- Preserve visited and unvisited link styling.
+- Attribution must be visible in footer and module source notes.
 
 ## Information Architecture
 
-Design review rating before this section: 5/10. The plan named the pages but did not define hierarchy or navigation. Version 1 should use this structure:
+Top navigation should mirror the mental model of USACO Guide:
 
-```text
-Landing
-  -> Guided Entry
-      -> Beginner Path
-      -> Bronze Module
-      -> Kazakhstan Olympiad Map
-  -> Curriculum
-      -> Module Page
-          -> Glossary Term
-          -> Source Attribution
-  -> Glossary
-      -> Term Page
-  -> Teacher/Coach
-  -> Attribution / License
-```
+- **Road To IOI** brand mark and wordmark.
+- **Sections** dropdown: General, Bronze, Silver, Gold, Platinum, Advanced, IOI.
+- **Problems**
+- **Resources** dropdown: Glossary, Kazakhstan Olympiad Map, Teacher Plan, Attribution.
+- **Contact**
+- **Search**
+- **Login** placeholder only until accounts exist.
+- **Settings** for theme/language later.
 
-Persistent top-level navigation:
+Russian labels are the product default:
 
-- Guide
-- Start Here
-- Curriculum
-- Glossary
-- For Teachers
-- Olympiad Map
+- `Разделы`
+- `Задачи`
+- `Ресурсы`
+- `Связаться`
+- `Поиск`
+- `Войти`
 
-The first viewport has one job: make the product identity and starting action obvious. It should show:
+Core pages:
 
-1. Brand/product name.
-2. One plain-language promise: Russian-language CP roadmap for Kazakhstan olympiad students.
-3. Primary action: Start Here.
+- `/ru`: dashboard-style home.
+- `/ru/start`: guided entry.
+- `/ru/curriculum`: division overview and timeline.
+- `/ru/modules/[slug]`: module reading page.
+- `/ru/glossary`: terminology index.
+- `/ru/teachers`: teacher/coach page.
+- `/ru/olympiad-map`: Kazakhstan olympiad map.
+- `/ru/attribution`: source and license.
 
-Do not lead with generic feature cards. The second screen can explain the three entry paths: beginner, regional/national, and IOI-style preparation.
+## Page Contracts
 
-## Page-Level Design Contracts
+### Home Dashboard
 
-### Landing
+Purpose: make the guide feel like a working training app.
 
-Primary job: orient a student or teacher within 5 seconds.
+Required sections:
 
-Required hierarchy:
+- Not-signed-in or local-progress notice.
+- Wide "Welcome back" card with continue CTA.
+- Activity heatmap surface.
+- Statistics cards for modules and problems.
+- Section cards for General, Bronze, Advanced/IOI.
+- Recent modules.
+- Attribution strip.
 
-1. Brand and purpose.
-2. Start Here action.
-3. Three path previews: beginner, regional/national, IOI-style.
-4. Trust/attribution note.
-5. Teacher link.
+Avoid a marketing hero as the main first viewport. The home page should look like a learner dashboard.
 
-### Guided Entry
+### Division Page
 
-Primary job: help students self-place without a quiz in v1.
-
-Each path option should show:
-
-- Who it is for.
-- First recommended module.
-- What the student should already know.
-- What success looks like after the path.
-
-### Curriculum / Module Page
-
-Primary job: make long-form learning readable and source-traceable.
+Purpose: show roadmap depth and make topic order obvious.
 
 Required layout:
 
-- Left or top navigation for module sequence.
-- Main reading column optimized for long-form Russian text.
-- Progress control with four local states.
-- Glossary terms visually linked but not distracting.
-- Source note near the module title or footer.
-- Helper callouts clearly distinct from faithful translated content.
+- Strong division hero band, with Bronze using rust/bronze.
+- Module and problem progress cards.
+- Vertical timeline grouped by topic.
+- Each module row shows title, short description, frequency/status, and updated/translation status.
+
+### Module Page
+
+Purpose: long-form learning with minimal distraction.
+
+Desktop layout:
+
+- Fixed left rail with brand, selected division, topic groups, and module links.
+- Central reading column.
+- Right table of contents.
+- Top breadcrumb row with previous/home/division/current/next.
+- Sign-in/local-progress card.
+- Compact module progress control.
+- Source/translation note near the title.
+- Resources, code blocks, callouts, problems, quiz/progress sections.
+
+Mobile layout:
+
+- Top navigation remains available.
+- Sidebar becomes a compact block above content or collapsible module list.
+- Right TOC is hidden or collapsed.
+- Reading column has no horizontal scroll except code blocks.
 
 ### Glossary
 
-Primary job: reduce terminology friction.
+Purpose: remove terminology friction.
 
 Required layout:
 
-- Search/filter.
+- Search always visible above results.
 - Russian term first.
 - English term second.
-- Short explanation.
-- Example.
-- Related modules.
-- Optional Kazakh term field hidden or marked as future when empty.
+- Short explanation, example, and related modules.
+- Kazakh field may be absent without visual gaps.
 
-### Teacher/Coach Page
+### Teacher Page
 
-Primary job: make school-club adoption obvious.
+Purpose: make school-club adoption practical.
 
 Required layout:
 
 - 6-8 week plan.
 - Mixed-level classroom guidance.
-- Suggested contest rhythm.
-- Links into the exact modules to assign.
-- Notes on using the Kazakhstan Olympiad Map.
+- Contest rhythm.
+- Exact module links to assign.
+- How to use Kazakhstan Olympiad Map.
 
-## Interaction States
+## Typography
 
-Every v1 screen needs explicit visible states:
+Use fonts with strong Cyrillic support and a technical reading feel.
 
-| Feature | Loading | Empty | Error | Success | Partial |
-|---------|---------|-------|-------|---------|---------|
-| Guided entry | Skeleton or stable option list placeholder | Show all paths with "not sure? start with Beginner" fallback | Explain that paths could not load and link to Curriculum | Selected path is highlighted and next module CTA appears | If a module is missing, show nearest available translated module |
-| Curriculum list | Stable list placeholder | Explain no translated modules are ready yet and link to Attribution/roadmap | Show retry and plain text fallback | Modules grouped by path with status indicators | Untranslated modules appear disabled with source link |
-| Module page | Reading skeleton preserving layout width | Show "module not translated yet" with source link | Show readable error, source link, and route back to Curriculum | Content, progress control, glossary links, source note visible | Missing helper notes should not block faithful translated text |
-| Glossary | Search input and term-list placeholder | "No term found" plus suggest browsing all terms | Keep current query, show retry and all terms link | Term details and related modules visible | Terms can omit Kazakh field without visual breakage |
-| Progress tracking | Existing state remains visible while saving | New visitor sees all modules as Not started | If local storage fails, explain progress is unavailable in this browser | State changes immediately and persists locally | If storage is cleared, user sees reset state without broken UI |
-| Teacher/coach page | Static content placeholder | Not applicable; page always has starter plan | Show fallback text if module links fail | Plan and module links visible | Missing module links are labeled "coming later" |
+- **Display / page titles:** Source Sans 3, 800-900 weight.
+- **Body:** Source Sans 3, 400-600 weight.
+- **UI labels:** Source Sans 3, 700-800 weight.
+- **Data / small metadata:** IBM Plex Sans or Source Sans 3 with tabular numbers.
+- **Code:** JetBrains Mono.
 
-Empty states must be useful, not dead ends. Each empty state needs one primary next action.
+Loading strategy:
 
-## User Journey And Emotional Arc
+- Prefer self-hosted fonts for production.
+- During scaffold, a font stack fallback is acceptable:
+  `"Source Sans 3", "Segoe UI", "Noto Sans", Arial, sans-serif`
+- Do not use Inter as the primary design recommendation.
 
-| Step | User does | User likely feels | Design response |
-|------|-----------|-------------------|-----------------|
-| 1 | Lands on site | "Is this for me?" | First viewport states Kazakhstan, Russian, CP olympiad preparation, and Start Here |
-| 2 | Chooses a path | Uncertain about level | Path cards use concrete prerequisites and outcomes, not vague labels |
-| 3 | Opens first module | Relief or intimidation | Reading layout is calm, glossary terms are available, helper notes are labeled |
-| 4 | Marks progress | Small sense of momentum | Local progress update is immediate and visible |
-| 5 | Hits unknown term | Friction | Glossary opens without losing reading context |
-| 6 | Teacher checks site | "Can I use this Monday?" | Teacher page gives a 6-8 week plan and mixed-level instructions |
-| 7 | Strong student scans depth | Skeptical about beginner branding | Advanced/IOI path is visible early and serious in tone |
+Type scale:
 
-5-second goal: user understands what the site is and where to start.
+- `xs`: 0.82rem / 13px - metadata, captions.
+- `sm`: 0.94rem / 15px - side nav, labels.
+- `base`: 1rem / 16px - app UI.
+- `reading`: 1.15rem / 18px - module body.
+- `h3`: 1.35rem / 22px.
+- `h2`: 2rem / 32px.
+- `h1`: clamp(2.6rem, 5vw, 4rem).
 
-5-minute goal: user has chosen a path and opened the right first module.
+Line length:
 
-5-year goal: the product feels like the trusted Russian/Kazakhstan reference for CP study, not a one-off translation dump.
+- Module body: 65-80 characters.
+- Navigation labels: no wrapping unless mobile.
+- Code blocks: horizontal scroll is acceptable.
 
-## Visual System Direction
+## Color
 
-Design review rating before this section: 4/10. The plan had product direction but no visual system. The v1 UI should feel like a serious educational reference: calm, precise, and trustworthy.
+Approach: dark restrained palette with semantic accents.
 
-Classifier: USACO Guide-inspired dark documentation app. The product should feel structurally close to USACO Guide: dark navigation, dense app surfaces, progress cards, division pages, timeline-like curriculum lists, left-rail module navigation, and right-side table of contents on module pages. It must remain separately branded as Road To IOI and must not imply official USACO Guide endorsement.
+Core tokens:
 
-Reference screenshots supplied on 2026-06-04 establish the target visual language:
+```css
+--bg: #0f0f10;
+--bg-deep: #080b12;
+--nav: #101927;
+--sidebar: #141b27;
+--panel: #1c2a3d;
+--panel-dark: #0e1625;
+--panel-soft: #172235;
+--line: #28364a;
+--line-strong: #3b4b62;
+--text: #f8fafc;
+--muted: #b5c3d7;
+--subtle: #8290a7;
+--link: #8cbcff;
+--visited: #b9a5ff;
+--accent: #3b82f6;
+--accent-strong: #2148d5;
+--bronze: #8b270d;
+--silver: #6b7280;
+--gold: #b7791f;
+--platinum: #4b5563;
+--green: #00843d;
+--amber: #b26b00;
+--blue: #2446ce;
+--purple: #3b0d56;
+--code: #1c1c1d;
+```
 
-- Dark navy top navigation with logo, section navigation, search/login/settings affordances.
-- Dashboard home with local sign-in/progress messaging, a wide welcome card, activity heatmap, and statistics cards.
-- Bronze division page with a strong bronze hero band, progress cards, and a vertical topic timeline.
-- Module pages with a fixed left curriculum rail, central reading column, right table of contents, compact progress control, dark resource/source cards, code blocks, and quiz/progress areas.
+Usage:
 
-Implementation rule: match the interaction and information architecture patterns, not the exact USACO brand mark or official naming. Road To IOI remains the visible brand.
+- Page background: `--bg`.
+- Header: `--nav`.
+- Module sidebar: `--sidebar`.
+- Cards and dashboard panels: `--panel`.
+- Reading source cards: `--panel-dark`.
+- Links/actions: `--link` and `--accent`.
+- Bronze division hero: `--bronze`.
+- Progress status: green completed, amber in progress, blue skipped, near-white not started.
+- Callouts: amber for warning/beginner, purple for term/explanation.
 
-Hard rules:
+Contrast:
 
-- Avoid generic SaaS feature grids as the first impression.
-- Avoid purple/blue gradient startup styling.
-- Avoid generic decorative icon-in-circle cards. A functional circular graph-like brand mark is acceptable because it mirrors the reference navigation pattern while staying separately branded.
-- Avoid centered everything.
-- Avoid oversized rounded cards as the dominant layout.
-- Use cards only for actual path choices, module tiles, and glossary entries.
-- Keep module reading pages document-like, not dashboard-like.
-- Preserve visited versus unvisited link distinction.
+- Body text must meet WCAG AA on dark surfaces.
+- Muted text must stay readable, especially in Russian paragraphs.
+- Do not rely on color alone for status.
 
-Typography:
+## Layout
 
-- Use a modern sans-serif documentation stack with strong Cyrillic support.
-- Prefer dense, readable UI typography over editorial serif headings.
-- Body text must be at least 16px; module reading text should be larger than navigation text.
-- Long-form module text should use a comfortable reading measure, roughly 65-80 characters per line on desktop.
+Approach: grid-disciplined app layout.
 
-Color:
+Spacing:
 
-- Define CSS variables for the color system.
-- Primary palette: near-black page background, dark navy navigation and cards, muted blue-gray secondary text, bright blue links/actions.
-- Division accent colors are allowed, especially bronze/rust for Bronze pages.
-- Use status colors for progress: green completed, amber in progress, blue skipped, white not started.
-- Body text contrast must meet at least WCAG AA contrast.
+- Base unit: 8px.
+- Dense app surfaces use 16-24px inner padding.
+- Major sections use 48-80px vertical spacing.
+- Module page side rail is intentionally dense.
 
-Motion:
+Breakpoints:
 
-- Motion is optional in v1.
-- If used, keep it functional: path selection, progress state change, glossary reveal.
-- Do not use decorative floating shapes, blobs, or animated hero backgrounds.
+- `<= 860px`: mobile stacked layout.
+- `861px - 1240px`: collapse module page to single-column to avoid narrow reading.
+- `> 1240px`: three-column module layout.
 
-## Responsive And Accessibility Requirements
+Desktop widths:
 
-Design review rating before this section: 3/10. The plan did not specify mobile, keyboard, or screen-reader behavior.
+- Dashboard content max width: 1520px.
+- Module article max width: 1040px.
+- Reading paragraph max width: 78ch.
+- Left module rail: 300-400px.
+- Right TOC: 220-300px.
 
-Responsive behavior:
+Radius:
 
-- Mobile landing shows brand, promise, Start Here, then path options.
-- Mobile module pages use top navigation and a collapsible module list; no permanent sidebar below tablet width.
-- Desktop module pages may use a two-column layout: navigation/context plus reading column.
-- Glossary search remains visible above term results on mobile.
-- Teacher page keeps the week plan as a vertical sequence on mobile and may use a table/timeline on desktop.
+- Default card radius: 8px.
+- Buttons: 6px.
+- Code blocks: 4px.
+- Circular progress/status markers: full radius.
 
-Accessibility:
+## Components
 
-- All interactive targets must be at least 44px on touch devices.
-- Every page must have one `h1` and logical heading order.
-- Navigation, main content, and footer need semantic landmarks.
-- Progress controls must be keyboard accessible and announce state changes.
-- Glossary links must be understandable out of context.
-- Helper callouts must not rely on color alone.
-- Placeholder text must never be the only label.
-- Module source/attribution links must be reachable by keyboard.
+### Brand Mark
 
-## Design Decisions Not In Scope For V1
+Use a circular graph-like mark: three nodes connected visually through position or subtle strokes. It can echo the reference pattern but must not copy the USACO Guide logo exactly.
 
-- Full placement diagnostic: deferred until after first translated slice.
-- Teacher dashboards/accounts: explicitly out of scope.
-- Cloud-synced progress: explicitly out of scope.
-- Visual redesign for Kazakh localization: wait until Russian workflow works.
-- Automated upstream sync UI: not in v1.
+### Header
 
-## What Already Exists
+- Sticky.
+- Dark navy.
+- Dense but touch-friendly.
+- Dropdowns should look like app menus, not marketing mega menus.
+- Search should feel like a command affordance.
 
-- `DESIGN.md` is the design source of truth for this empty project.
-- No existing app UI patterns exist in this repository yet.
-- No `CLAUDE.md`, `TODOS.md`, or prior design review artifacts were found.
-- USACO Guide provides source content structure and product reference, but the new frontend should not blindly copy its visual design.
+### Progress Cards
 
-## Content Rules
+USACO-like circular counters:
 
-Translation should be faithful by default.
+- Large colored circle.
+- Number inside.
+- Label below.
+- Thin progress bar underneath.
+- Total count aligned right.
 
-The main translated module text stays faithful to USACO Guide. Beginner support should live in a separate helper layer, not as silent rewrites.
+### Timeline
 
-Allowed additions:
+- Vertical center line on desktop.
+- Topic group label on the left.
+- Module list on the right.
+- Dots or nodes mark module positions.
+- On mobile, collapse to a simple ordered list.
 
-- Translator notes for terminology.
-- Short prerequisite reminders.
-- Kazakhstan-specific level labels.
-- Glossary links.
-- Clarifications when an English idiom or USACO-specific framing would confuse Russian-speaking students.
-- Clearly labeled helper callouts: `Пояснение`, `Термин`, and `Для начинающих`.
+### Module Sidebar
+
+- Sticky on desktop.
+- Topic sections with h2 labels.
+- Module links as vertical lists.
+- Current module has left accent and brighter text.
+- Bottom links for settings/contact can be added later.
+
+### Right TOC
+
+- Sticky.
+- Uppercase small heading.
+- Plain links, no cards.
+- Use real anchors only.
+
+### Code Blocks
+
+- Dark code surface.
+- JetBrains Mono.
+- Language badge in bright yellow.
+- Copy button can be added later.
+- Lines should remain readable without decorative chrome.
+
+### Callouts
+
+Allowed callout types:
+
+- `Пояснение`
+- `Термин`
+- `Для начинающих`
+- `Предупреждение`
+
+Callouts must include text labels/icons, not color alone.
+
+## Motion
+
+Approach: minimal-functional.
+
+Use motion only for:
+
+- Dropdown open/close.
+- Progress state change.
+- Search result filtering.
+- Collapsible mobile navigation.
+
+Timing:
+
+- Micro: 80-120ms.
+- Standard: 150-220ms.
+- Avoid long animated entrances.
+
+No decorative animated backgrounds.
+
+## Accessibility
+
+Requirements:
+
+- One `h1` per page.
+- Semantic `header`, `nav`, `main`, `aside`, and `footer`.
+- Touch targets at least 44px.
+- Keyboard focus must be visible on dark surfaces.
+- Progress controls must announce state changes.
+- Dropdowns must be keyboard reachable.
+- Search input needs a visible label or accessible name.
+- Module TOC links must target real anchors.
+- External source links must be reachable by keyboard.
+
+## Content Tone
+
+Russian copy should be direct and serious.
+
+Use:
+
+- `Разделы`
+- `Модули`
+- `Задачи`
+- `Прогресс`
+- `Не начато`
+- `В процессе`
+- `Завершено`
+- `Пропущено`
 
 Avoid:
 
-- Changing algorithms or problem recommendations without a reason.
-- Rewriting advanced modules into beginner material.
-- Mixing Kazakh translation into the Russian launch.
-- Hiding source attribution.
-- Silently changing the meaning of USACO Guide explanations during translation.
+- Childish encouragement.
+- Startup slogans.
+- Overexplaining UI mechanics inside the app.
+- Promising official USACO affiliation.
 
-## Translation Quality Pipeline
+## Attribution And Licensing
 
-Every translated module should carry a status block:
+Road To IOI must clearly state:
 
-- `Draft translation`
-- `Russian edited`
-- `CP reviewed`
-- `Student tested`
-- `Glossary checked`
-- `Ready`
+- Content is translated/adapted from USACO Guide where applicable.
+- USACO Guide and the Competitive Programming Initiative are credited.
+- Derivative translated content follows CC BY-NC-SA 4.0 unless permission changes.
+- Road To IOI is not the official USACO Guide.
 
-For v1, a module should not be marked ready unless it has:
+Attribution appears:
 
-- One Russian cleanup pass.
-- One CP correctness pass.
-- One glossary consistency pass.
+- In the footer.
+- On `/ru/attribution`.
+- In every translated module source note.
 
-Student testing is required for the first beginner path, then can be sampled after the workflow stabilizes.
+## Safe Choices
 
-## Bilingual Terminology System
+These intentionally follow USACO Guide because users in this category benefit from familiarity:
 
-The terminology layer should track recurring competitive programming terms with:
+- Dark navy app shell.
+- Division-based navigation.
+- Progress cards and local progress states.
+- Left rail plus right TOC on module pages.
+- Timeline curriculum view.
+- Dense resources/problems surfaces.
 
-- Russian term.
-- English term.
-- Short Russian explanation.
-- Example usage.
-- Optional Kazakh term later.
-- Related modules.
+## Road To IOI Differentiators
 
-Examples include greedy, prefix sums, invariant, graph traversal, dynamic programming, proof, and time complexity.
+These are where the design becomes its own product:
 
-This system is part of v1 because the English barrier is often terminology, not just long-form prose.
+- Russian-first labels and typography tuned for Cyrillic.
+- Kazakhstan olympiad progression map.
+- Teacher/coach page for school clubs.
+- Bilingual terminology system with future Kazakh field.
+- Clear derivative attribution instead of pretending to be USACO Guide.
 
-## Progress Tracking
+## Do Not Do
 
-Progress tracking in v1 is local-first only.
+- Do not build a beige school portal.
+- Do not build a glossy SaaS landing page.
+- Do not use purple gradients as identity.
+- Do not add decorative icon cards as a first-screen pattern.
+- Do not hide attribution.
+- Do not make every page a centered hero.
+- Do not simplify advanced content visually so much that strong students distrust it.
 
-Supported states:
+## Decisions Log
 
-- Not started.
-- In progress.
-- Completed.
-- Skipped.
-
-Use browser-local storage or an equivalent local mechanism. Do not add a new account system, teacher dashboard, cloud sync, or Firebase dependency for v1 progress tracking.
-
-## Teacher/Coach Mode
-
-Version 1 includes a lightweight teacher-facing page: "How to use this in a school club."
-
-It should include:
-
-- A 6-8 week starter plan.
-- Suggested modules for mixed-level groups.
-- How to combine lessons with contests.
-- How to support beginners without slowing advanced students.
-- How to use the Kazakhstan Olympiad Map.
-
-Do not build teacher accounts or dashboards in v1.
-
-## Kazakhstan Olympiad Map
-
-Version 1 includes a local progression map:
-
-- Beginner.
-- District.
-- City.
-- Regional.
-- National.
-- IOI-style preparation.
-
-This does not rewrite the curriculum. It maps the translated guide onto a Kazakhstan-relevant progression so students and coaches understand where modules fit.
-
-## Technical Direction
-
-The practical starting point is to build a new frontend and reuse USACO Guide's content structure, rather than maintaining a close fork of the existing app.
-
-Current USACO Guide tech stack includes:
-
-- React
-- Next.js
-- TypeScript
-- Tailwind CSS
-- MDX
-- Firebase
-
-Engineering review finding: USACO Guide is now a large Next.js application with a prebuild content indexing phase, SQLite-backed content queries, Firebase progress synchronization, Algolia indexing, Storybook, and many feature-specific dependencies. That architecture is appropriate for the full USACO Guide, but it is too heavy for this v1. Use it as a source reference, not as the app base.
-
-The new frontend direction means:
-
-- More effort than a direct fork.
-- Better separate branding and localization architecture.
-- Less risk of fighting USACO Guide's existing app architecture.
-- Upstream sync becomes a content workflow problem, not a Git merge problem.
-- Attribution and source provenance must be explicit in the content model.
-
-## Engineering Architecture
-
-Engineering review status: clear with tasks. The v1 architecture should be static-first.
-
-Recommended stack:
-
-- Next.js.
-- TypeScript.
-- MDX or MDX-compatible content files.
-- Tailwind CSS or plain CSS modules with explicit design tokens.
-- Build-time content validation.
-- Browser `localStorage` through a small progress adapter.
-
-Do not copy USACO Guide's full SQLite indexing, Firebase user data context, Algolia search, Monaco editor, Storybook, or benchmarking stack into v1 unless a later implementation review proves the need.
-
-High-level architecture:
-
-```text
-content/modules/*.mdx
-content/glossary/*.json|yaml
-content/maps/*.json|yaml
-        |
-        v
-build-time content loader + schema validation
-        |
-        +--> static route data
-        +--> module graph
-        +--> glossary index
-        +--> attribution/source map
-        |
-        v
-Next.js pages/components
-        |
-        +--> local progress adapter -> browser localStorage
-```
-
-Core app boundaries:
-
-- `content/`: translated source-linked curriculum and glossary data.
-- `src/content/`: schema validation, loaders, module graph, source provenance helpers.
-- `src/progress/`: local-first progress adapter and migration/versioning.
-- `src/components/`: reusable UI components for layout, module pages, glossary, callouts, and progress controls.
-- `src/app/` or `src/pages/`: routes.
-
-## Content Schema
-
-Version 1 should use source-linked translated content. Each Russian module should have metadata similar to:
-
-```yaml
-id: "time-complexity"
-title: "..."
-description: "..."
-language: "ru"
-path:
-  track: "beginner"
-  order: 20
-source:
-  title: "Original USACO Guide module title"
-  url: "https://usaco.guide/..."
-  repoPath: "content/..."
-  sourceCommit: "..."
-license: "CC BY-NC-SA 4.0"
-translation:
-  status: "draft | reviewed | ready"
-  translatedBy: []
-  reviewedBy: []
-  glossaryChecked: false
-  cpReviewed: false
-  studentTested: false
-prerequisites: []
-glossaryTerms: []
-problems: []
-```
-
-Do not build an automated upstream sync/importer in v1. Translate selected modules manually with source metadata.
-
-Validation rules:
-
-- `id`, `title`, `description`, `language`, `source.url`, `source.repoPath`, `source.sourceCommit`, `license`, and `translation.status` are required.
-- `language` is `ru` for v1.
-- `translation.status: ready` is invalid unless Russian cleanup, CP review, and glossary check are complete.
-- `source.url` must be a valid URL.
-- `sourceCommit` must be a commit SHA or explicit `unknown` during draft only.
-- Module IDs must be stable, lowercase, and URL-safe.
-- Glossary term references must resolve.
-- Prerequisite module IDs must resolve or be marked `comingLater`.
-
-## Data Flow
-
-Module render flow:
-
-```text
-MDX module file
-  -> parse frontmatter
-  -> validate schema
-  -> compile/render MDX
-  -> collect glossary references
-  -> build source attribution block
-  -> render module page
-```
-
-Progress flow:
-
-```text
-User clicks progress state
-  -> ProgressControl validates next state
-  -> progress adapter writes {schemaVersion, updatedAt, modules}
-  -> UI updates optimistically
-  -> storage failure falls back to in-memory state + visible warning
-```
-
-Glossary flow:
-
-```text
-Glossary data
-  -> validate terms
-  -> build search/filter index in memory
-  -> module page links terms
-  -> glossary term page links back to modules
-```
-
-Attribution flow:
-
-```text
-module.source metadata
-  -> module source note
-  -> attribution/license page source list
-  -> footer license link
-```
-
-## Progress Adapter
-
-Do not let progress tracking leak into the whole app. Implement it behind a narrow interface:
-
-```ts
-type ProgressState = "not-started" | "in-progress" | "completed" | "skipped";
-
-type ProgressStore = {
-  get(moduleId: string): ProgressState;
-  set(moduleId: string, state: ProgressState): void;
-  list(): Record<string, ProgressState>;
-  reset(): void;
-};
-```
-
-Storage shape:
-
-```json
-{
-  "schemaVersion": 1,
-  "updatedAt": "2026-06-04T00:00:00.000Z",
-  "modules": {
-    "time-complexity": "completed"
-  }
-}
-```
-
-Failure rules:
-
-- If `localStorage` is unavailable, progress controls remain visible but show a clear browser-storage warning.
-- Invalid stored states are ignored and reset to `not-started`.
-- Unknown module IDs are ignored during reads.
-- Storage schema migrations must be explicit by `schemaVersion`.
-
-## Error Handling And Failure Modes
-
-| Codepath | What can go wrong | Handling | Test |
-|----------|-------------------|----------|------|
-| Content loader | Missing required frontmatter | Fail build with module path and missing field | Schema validation unit test |
-| Content loader | Broken prerequisite/glossary reference | Fail build unless explicitly marked `comingLater` | Fixture with broken reference |
-| MDX render | Unsupported MDX component copied from USACO Guide | Fail build or render explicit unsupported-component warning in draft | Fixture using unsupported component |
-| Attribution | Missing source URL or license | Fail build for ready modules | Metadata validation test |
-| Progress adapter | `localStorage` unavailable or quota exceeded | Keep in-memory state and show warning | Mock storage throwing errors |
-| Progress adapter | Corrupt stored JSON | Ignore corrupt data, reset, and avoid crash | Corrupt JSON unit test |
-| Glossary | Search returns zero terms | Render useful empty state with all-terms link | Component test |
-| Module route | Requested module not translated | Render coming-later page with original source link | Route/component test |
-
-Critical gap resolved by this review: no v1 user-visible flow should fail silently.
-
-## Security And Privacy
-
-V1 should not collect accounts, emails, classroom data, or analytics by default.
-
-Security requirements:
-
-- Treat MDX content as trusted repository content, not user input.
-- Do not support arbitrary user-authored MDX in v1.
-- Avoid `rehype-raw` unless there is a specific reviewed need.
-- External links from translated content should use safe link attributes where applicable.
-- No Firebase, no server-side secrets, and no API write endpoints in v1.
-- Local progress data stays in the user's browser and is not transmitted.
-
-## Performance Requirements
-
-- Generate static pages for the accepted v1 content slice.
-- Keep client JavaScript small on module reading pages.
-- Do not ship Monaco/editor, Firebase, Algolia, or database clients in v1.
-- Glossary search can be client-side over 20-40 terms.
-- Module pages should remain readable without progress hydration completing.
-
-Performance budget for v1:
-
-- Module page should render useful static content before any client progress code runs.
-- Progress tracking should be a small client-only island/component.
-- No global client state library unless a later feature requires it.
-
-## Test Plan
-
-Minimum automated tests before v1 launch:
-
-- Content schema validation tests.
-- Fixture tests for ready/draft module status gates.
-- Glossary reference resolution tests.
-- Prerequisite/module graph resolution tests.
-- Progress adapter tests for normal, unavailable storage, quota error, corrupt JSON, and migration.
-- Component tests for guided entry path cards, progress control, module source note, glossary empty state, and helper callouts.
-- Accessibility checks for navigation, progress controls, glossary search, and module page landmarks.
-
-Minimum manual QA:
-
-- 375px mobile viewport.
-- Desktop module reading layout.
-- Keyboard-only navigation.
-- Disable local storage and verify graceful progress fallback.
-- Open untranslated module route and verify source link.
-- Verify footer, license page, and module-level source notes all exist.
-
-## Deployment And Rollout
-
-V1 should deploy as a static or mostly-static site on a simple host such as Vercel, Netlify, or GitHub Pages-compatible static hosting. Avoid backend infrastructure until accounts, sync, or contribution workflows become real requirements.
-
-Rollout order:
-
-1. Content schema and validation.
-2. Static routes and layout.
-3. Attribution/license surface.
-4. Module rendering.
-5. Glossary.
-6. Local-first progress.
-7. Teacher/coach and Olympiad Map pages.
-8. Pilot release.
-
-CI should run:
-
-- Type checking.
-- Linting/format check.
-- Content validation.
-- Unit/component tests.
-- Production build.
-
-## Engineering Decisions Not In Scope For V1
-
-- Automated upstream importer/sync.
-- SQLite content database.
-- Firebase/auth/cloud progress.
-- Algolia search.
-- Monaco editor or in-browser code runner.
-- Teacher dashboards.
-- User submissions or public comments.
-- Full offline/PWA mode.
-- Translation contribution workflow with accounts.
-
-## Risks
-
-- Full translation scope is large; translating everything before launch will stall the project.
-- Faithful translation may still be too hard for beginners without the guided entry layer.
-- License non-compliance would create avoidable trust and legal problems.
-- Separate branding can look dishonest if attribution is weak.
-- A new frontend increases implementation effort compared with a fork.
-- Without source metadata, translated modules can lose provenance and become hard to audit.
-- Progress tracking can bloat v1 if it becomes an account/cloud-sync project.
-- Translation status can become bureaucratic unless the ready gates stay minimal.
-- Copying USACO Guide's full app architecture would import unnecessary operational complexity.
-- Unsupported MDX components from USACO source content can break the new frontend unless detected at build time.
-- Local progress can silently fail in restricted browsers unless storage errors are surfaced.
-
-## Success Criteria
-
-Version 1 succeeds if:
-
-- A student can open the Russian site and understand where to start within 60 seconds.
-- A beginner can complete the first translated path without needing English.
-- A stronger student can see that advanced content exists and is not simplified away.
-- Attribution is clear and license-compliant.
-- The translation workflow is repeatable for the next module.
-- A teacher can understand how to use the site for a 6-8 week school club.
-- Each ready module has source metadata and minimum review gates.
-- Progress tracking works locally without accounts.
-
-## The Assignment
-
-Before implementing the full clone, create a 1-week pilot:
-
-1. Pick 5-8 Russian-speaking Kazakhstan students across beginner and regional/national levels.
-2. Show them a translated first module and the guided entry page.
-3. Watch silently as they choose where to start.
-4. Record where they hesitate, what terms confuse them, and whether stronger students trust the roadmap.
-5. Use those observations to decide the first 10 modules to translate.
-
-Do not ask only whether they "like it." Watch whether they can actually use it.
-
-## Next Implementation Plan
-
-1. Inspect `cpinitiative/usaco-guide` to understand module structure, metadata, and source URLs.
-2. Define the new frontend content schema for source-linked Russian modules.
-3. Implement content validation before writing most UI.
-4. Choose typefaces, color tokens, responsive breakpoints, and base layout primitives before building pages.
-5. Scaffold the separate brand frontend.
-6. Add attribution/license handling globally and per module.
-7. Build module rendering and unsupported-MDX detection.
-8. Build landing, guided entry, teacher/coach page, Kazakhstan Olympiad Map, glossary, and local-first progress tracking.
-9. Implement interaction states and accessibility requirements for each v1 screen.
-10. Translate the accepted v1 content slice with source metadata.
-11. Apply the translation quality pipeline to the first path.
-12. Run automated validation, accessibility checks, production build, and manual QA.
-13. Run the student and teacher pilot before expanding the translation scope.
-
-## Implementation Tasks
-
-Synthesized from design review findings. Each task derives from a specific finding above.
-
-- [ ] **T1 (P1, human: ~2h / CC: ~20min)** - Information architecture - Implement the v1 page hierarchy and persistent navigation
-  - Surfaced by: Information Architecture - the plan had pages but not what users see first, second, and third.
-  - Files: frontend routes/layout/navigation once scaffolded.
-  - Verify: desktop and mobile navigation answer what site this is, where the user is, and where to start.
-
-- [ ] **T2 (P1, human: ~2h / CC: ~20min)** - Interaction states - Add loading, empty, error, success, and partial states for v1 screens
-  - Surfaced by: Interaction State Coverage - empty and error states were unspecified.
-  - Files: guided entry, curriculum, module page, glossary, progress control, teacher page.
-  - Verify: manually force empty/missing/error data and confirm each state gives a next action.
-
-- [ ] **T3 (P2, human: ~2h / CC: ~15min)** - Visual system - Define typography, color tokens, and anti-slop rules before page implementation
-  - Surfaced by: AI Slop Risk and Design System Alignment - the plan lacked concrete visual constraints.
-  - Files: global CSS/theme configuration/design tokens once scaffolded.
-  - Verify: no default primary font stack, no generic SaaS card-grid first impression, body text AA contrast.
-
-- [ ] **T4 (P1, human: ~2h / CC: ~20min)** - Accessibility and responsive design - Build mobile and keyboard behavior into the page specs
-  - Surfaced by: Responsive & Accessibility - mobile nav, touch targets, landmarks, and progress announcements were unspecified.
-  - Files: layout, module navigation, progress controls, glossary search, teacher plan.
-  - Verify: keyboard-only navigation, 375px mobile viewport check, semantic landmarks, visible labels.
-
-- [ ] **T5 (P1, human: ~3h / CC: ~30min)** - Content schema - Implement source-linked module schema and build-time validation
-  - Surfaced by: Engineering Architecture - translated modules need provenance, status gates, and broken-reference detection.
-  - Files: content schema, content loader, validation fixtures.
-  - Verify: invalid ready module, missing source URL, broken glossary term, and broken prerequisite all fail validation.
-
-- [ ] **T6 (P1, human: ~2h / CC: ~20min)** - Progress adapter - Implement local-first progress behind a narrow storage interface
-  - Surfaced by: Progress Adapter - progress must not become Firebase/auth architecture in v1.
-  - Files: progress adapter, progress control, storage tests.
-  - Verify: normal write, unavailable storage, quota error, corrupt JSON, unknown module, and schema migration tests pass.
-
-- [ ] **T7 (P1, human: ~2h / CC: ~20min)** - MDX safety - Detect unsupported USACO MDX components at build time
-  - Surfaced by: Error Handling - selected USACO content may reference components the new frontend does not implement.
-  - Files: MDX loader/compiler, allowed component registry, validation fixtures.
-  - Verify: fixture with unsupported component fails build or is blocked from ready status.
-
-- [ ] **T8 (P2, human: ~2h / CC: ~15min)** - CI and rollout - Add typecheck, lint, content validation, tests, and production build to CI
-  - Surfaced by: Deployment and Rollout - v1 needs repeatable validation before content expansion.
-  - Files: package scripts, CI workflow once repository is scaffolded.
-  - Verify: CI fails on invalid content and passes on the v1 fixture set.
-
-## GSTACK REVIEW REPORT
-
-| Review | Trigger | Why | Runs | Status | Findings |
-|--------|---------|-----|------|--------|----------|
-| CEO Review | `/plan-ceo-review` | Scope & strategy | 1 | CLEAR_WITH_DECISIONS | Approach B selected; selective expansion accepted 5 v1 additions, deferred diagnostic, changed technical strategy to new frontend with source-linked content |
-| Codex Review | `codex review` | Independent 2nd opinion | 0 | not run | Not applicable yet |
-| Eng Review | `/plan-eng-review` | Architecture & tests | 1 | CLEAR_WITH_TASKS | Static-first Next/TS/MDX architecture selected; added content schema, data flows, progress adapter, failure modes, security/privacy, performance, test plan, rollout, and 4 engineering tasks |
-| Design Review | `/plan-design-review` | UI/UX gaps | 1 | CLEAR_WITH_TASKS | Initial score 5/10 -> 8/10; added IA, page contracts, interaction states, journey, visual system, responsive/a11y, and 4 implementation tasks |
-| DX Review | `/plan-devex-review` | Developer experience gaps | 0 | optional later | Translation workflow may need DX review once tooling exists |
-
-UNRESOLVED: exact typefaces and color tokens remain design implementation decisions.
-VERDICT: CEO + DESIGN + ENG REVIEW CLEARED WITH TASKS; ready to implement v1 scaffold.
+| Date | Decision | Rationale |
+|------|----------|-----------|
+| 2026-06-06 | Start fresh toward a USACO Guide-inspired design system | User explicitly chose a fresh design direction but closer to `usaco.guide` |
+| 2026-06-06 | Make the home page a learner dashboard, not a marketing hero | The reference product behaves like a guide app with progress and modules |
+| 2026-06-06 | Keep Road To IOI separately branded | Required for trust, licensing, and avoiding implied USACO endorsement |
