@@ -60,20 +60,21 @@ export function ModuleRenderer({ module }: { module: ModuleInfo }) {
           <Link href="/ru/curriculum">Next ›</Link>
         </div>
 
-        <section className="signin-card">
-          <h2>Вы не вошли в систему</h2>
-          <p>Прогресс сохраняется только в этом браузере. Аккаунты и синхронизация не входят в V1.</p>
+        <section className="signin-card module-session">
+          <div>
+            <h2>Локальный прогресс</h2>
+            <p>Статус сохраняется в этом браузере. Аккаунты и синхронизация появятся позже.</p>
+          </div>
           <Link href="/ru/start">Выбрать путь</Link>
         </section>
 
         <div className="module-heading">
           <div>
-            <p className="frequency-dots" aria-hidden="true">••••</p>
+            <p className="frequency-dots" aria-label="Very frequent">•••• <span>Very Frequent</span></p>
             <h1>{module.title}</h1>
             <p className="authors">Source: {module.source.title}</p>
             <p className="lede">{module.description}</p>
           </div>
-          <ProgressControl moduleId={module.id} />
         </div>
 
         <SourceNote module={module} />
@@ -164,6 +165,20 @@ export function ModuleRenderer({ module }: { module: ModuleInfo }) {
             ))}
           </div>
         </section>
+
+        <section className="inline-section quiz-panel" aria-labelledby="module-quiz">
+          <h2 id="module-quiz">Проверка понимания</h2>
+          <p>Что измеряет временная сложность алгоритма?</p>
+          <ol>
+            <li>Сколько памяти занимает программа.</li>
+            <li>Как число операций растет от размера входа.</li>
+            <li>Сколько времени ученик потратил на решение.</li>
+          </ol>
+          <div className="module-progress-footer">
+            <strong>Module Progress:</strong>
+            <ProgressControl moduleId={module.id} />
+          </div>
+        </section>
       </article>
       <aside className="toc-panel" aria-label="Содержание">
         <h2>Table of Contents</h2>
@@ -194,13 +209,23 @@ function SourceNote({ module }: { module: ModuleInfo }) {
   return (
     <section className="source-note" aria-labelledby="source-note-title">
       <h2 id="source-note-title">Источник и статус перевода</h2>
-      <p>
-        Черновой русскоязычный модуль с привязкой к источнику:{" "}
+      <div className="resource-table">
         <a href={module.source.url} rel="noreferrer" target="_blank">
-          {module.source.title}
+          <span>Source</span>
+          <strong>{module.source.title}</strong>
+          <em>original module</em>
         </a>
-        . Лицензия: {module.license}. Статус: {module.translation.status}.
-      </p>
+        <span>
+          <span>License</span>
+          <strong>{module.license}</strong>
+          <em>share alike</em>
+        </span>
+        <span>
+          <span>Status</span>
+          <strong>{module.translation.status}</strong>
+          <em>translation pipeline</em>
+        </span>
+      </div>
     </section>
   );
 }
