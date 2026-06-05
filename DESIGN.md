@@ -10,6 +10,21 @@ Date: 2026-06-06
 - **Project type:** Dense learning web app and documentation system, not a marketing site.
 - **Primary reference:** USACO Guide. Match its information architecture, density, dark reading surfaces, progress vocabulary, module navigation, and contest-training seriousness. Do not copy its official branding or imply endorsement.
 
+## Approved Shotgun Direction
+
+Approved variant: **C - IOI Training Console**.
+
+This means Road To IOI should bias toward the module reading experience as the product's trust anchor. The dashboard and division pages still follow USACO Guide patterns, but the strongest visual identity should come from:
+
+- Fixed curriculum rail on module pages.
+- Dense central article layout.
+- Right table of contents.
+- Source/resource tables.
+- Code blocks and quizzes.
+- Minimal decoration and fast scanning for advanced students.
+
+The site should feel like a training console for serious olympiad preparation, not just a dashboard clone.
+
 ## Memorable Target
 
 Road To IOI should feel like the Russian/Kazakhstan version of a serious olympiad training reference: dark, precise, structured, and deep enough that strong students trust it immediately.
@@ -21,7 +36,7 @@ The first impression should not be "school website." It should be "this is the p
 - **Direction:** Competitive-programming documentation app.
 - **Decoration level:** Minimal-functional. Structure, color, progress states, and code blocks carry the interface.
 - **Mood:** Serious, technical, calm, and slightly intense.
-- **Density:** High. Pages should be scannable and information-rich, closer to USACO Guide than to a SaaS landing page.
+- **Density:** High. Pages should be scannable and information-rich, closer to a training console and USACO Guide module page than to a SaaS landing page.
 
 Hard rules:
 
@@ -71,7 +86,7 @@ Core pages:
 
 ### Home Dashboard
 
-Purpose: make the guide feel like a working training app.
+Purpose: route students back into modules quickly. The dashboard supports the training workflow; it should not become the main visual identity.
 
 Required sections:
 
@@ -98,7 +113,7 @@ Required layout:
 
 ### Module Page
 
-Purpose: long-form learning with minimal distraction.
+Purpose: long-form learning with minimal distraction. This is the primary design surface and should receive the highest polish.
 
 Desktop layout:
 
@@ -433,3 +448,4 @@ These are where the design becomes its own product:
 | 2026-06-06 | Start fresh toward a USACO Guide-inspired design system | User explicitly chose a fresh design direction but closer to `usaco.guide` |
 | 2026-06-06 | Make the home page a learner dashboard, not a marketing hero | The reference product behaves like a guide app with progress and modules |
 | 2026-06-06 | Keep Road To IOI separately branded | Required for trust, licensing, and avoiding implied USACO endorsement |
+| 2026-06-06 | Approve shotgun variant C, IOI Training Console | User selected the denser module-first direction as the strongest visual target |
