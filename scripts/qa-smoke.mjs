@@ -39,7 +39,7 @@ function sleep(ms) {
 }
 
 async function waitForReady() {
-  for (let attempt = 0; attempt < 30; attempt += 1) {
+  for (let attempt = 0; attempt < 120; attempt += 1) {
     try {
       const response = await fetch(`${baseUrl}/ru`);
       if (response.ok) return;
