@@ -49,15 +49,15 @@ export function ModuleRenderer({ module }: { module: ModuleInfo }) {
       </aside>
       <article className="module-article">
         <div className="module-topline">
-          <Link href="/ru/curriculum">‹ Prev</Link>
+          <Link href="/ru/sections/bronze">‹ Prev</Link>
           <div>
             <Link href="/ru">Home</Link>
             <span>›</span>
-            <Link href="/ru/curriculum">Bronze</Link>
+            <Link href="/ru/sections/bronze">Bronze</Link>
             <span>›</span>
             <span>{module.title}</span>
           </div>
-          <Link href="/ru/curriculum">Next ›</Link>
+          <Link href="/ru/sections/bronze">Next ›</Link>
         </div>
 
         <section className="signin-card module-session">

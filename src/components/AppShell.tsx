@@ -1,8 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { guideSections } from "@/content/sections";
 
 const navItems = [
-  { href: "/ru/curriculum", label: "Разделы" },
   { href: "/ru/modules/bronze-complete-search", label: "Задачи" },
   { href: "/ru/glossary", label: "Ресурсы" },
   { href: "/ru/teachers", label: "Учителям" },
@@ -22,6 +22,18 @@ export function AppShell({ children }: { children: ReactNode }) {
           <span>Road To IOI</span>
         </Link>
         <nav className="top-nav" aria-label="Основная навигация">
+          <div className="nav-dropdown">
+            <Link className="nav-trigger" href="/ru/sections">
+              Разделы <span aria-hidden="true">⌄</span>
+            </Link>
+            <div className="nav-menu" aria-label="Разделы">
+              {guideSections.map((section) => (
+                <Link href={`/ru/sections/${section.slug}`} key={section.slug}>
+                  {section.label}
+                </Link>
+              ))}
+            </div>
+          </div>
           {navItems.map((item) => (
             <Link key={item.href} href={item.href}>
               {item.label}

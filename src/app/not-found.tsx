@@ -11,7 +11,7 @@ export default function NotFound() {
           <Link className="button" href="/ru/start">
             Старт
           </Link>
-          <Link className="secondary-button" href="/ru/curriculum">
+          <Link className="secondary-button" href="/ru/sections">
             Учебный план
           </Link>
         </div>

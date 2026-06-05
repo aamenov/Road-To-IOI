@@ -168,6 +168,52 @@ input {
   gap: 22px;
 }
 
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-trigger {
+  gap: 6px;
+}
+
+.nav-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: -18px;
+  z-index: 70;
+  display: grid;
+  min-width: 220px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  background: var(--panel);
+  box-shadow: 0 18px 45px rgb(0 0 0 / 35%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.nav-dropdown:hover .nav-menu,
+.nav-dropdown:focus-within .nav-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.nav-menu a {
+  min-height: 48px;
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: var(--text);
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus-visible {
+  background: var(--panel-soft);
+  color: var(--link);
+}
+
 .site-footer {
   display: flex;
   justify-content: space-between;
@@ -491,6 +537,272 @@ h3 {
 
 .bronze-hero {
   background: var(--bronze);
+}
+
+.sections-index {
+  min-height: calc(100vh - 80px);
+  background: #08090c;
+}
+
+.section-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 34px;
+}
+
+.section-card {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  background: var(--panel);
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+
+.section-card:visited {
+  color: var(--text);
+}
+
+.section-card span {
+  color: var(--link);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.section-card strong {
+  font-size: 1.75rem;
+}
+
+.section-card em {
+  color: var(--muted);
+  font-style: normal;
+}
+
+.section-card.general {
+  border-color: #2d7cff;
+}
+
+.section-card.bronze {
+  border-color: #9a3a1a;
+}
+
+.section-card.silver {
+  border-color: #9ca3af;
+}
+
+.section-card.gold {
+  border-color: #d6a02f;
+}
+
+.section-card.platinum {
+  border-color: #64748b;
+}
+
+.section-card.advanced {
+  border-color: #a855f7;
+}
+
+.section-hero {
+  padding: 58px clamp(20px, 10vw, 192px) 66px;
+  color: var(--text);
+}
+
+.section-hero-general {
+  background: #132238;
+}
+
+.section-hero-bronze {
+  background: var(--bronze);
+}
+
+.section-hero-silver {
+  background: #4b5563;
+}
+
+.section-hero-gold {
+  background: #92620d;
+}
+
+.section-hero-platinum {
+  background: #374151;
+}
+
+.section-hero-advanced {
+  background: #3b0d56;
+}
+
+.section-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+  color: #dbeafe;
+  font-weight: 800;
+}
+
+.section-breadcrumbs a,
+.section-breadcrumbs a:visited {
+  color: #dbeafe;
+}
+
+.section-hero h1 {
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.section-hero p {
+  max-width: 920px;
+  margin: 0 auto 8px;
+  color: #f8fafc;
+  text-align: center;
+  font-size: 1.12rem;
+}
+
+.source-link,
+.source-link:visited {
+  display: flex;
+  width: fit-content;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  margin: 22px auto 38px;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 6px;
+  padding: 8px 14px;
+  background: rgb(8 11 18 / 24%);
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.section-overview {
+  background: #08090c;
+}
+
+.section-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 44px;
+}
+
+.section-switcher a {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 14px;
+  background: var(--panel-dark);
+  color: var(--muted);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.section-switcher a.active {
+  border-color: var(--accent);
+  background: var(--accent-strong);
+  color: #fff;
+}
+
+.section-timeline {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.section-group {
+  display: grid;
+  grid-template-columns: minmax(220px, 34%) minmax(0, 1fr);
+  gap: 58px;
+  border-left: 2px dashed var(--line-strong);
+  padding: 0 0 62px 34px;
+}
+
+.section-group:last-child {
+  padding-bottom: 0;
+}
+
+.section-group-label {
+  color: var(--muted);
+  text-align: right;
+}
+
+.section-group-label h2 {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+}
+
+.section-group-label span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+}
+
+.section-group-label span::before {
+  content: "";
+  width: 110px;
+  height: 10px;
+  border-radius: 999px;
+  background: #4a5870;
+}
+
+.section-group-label p {
+  margin: 14px 0 0;
+  color: var(--muted);
+}
+
+.section-module-list {
+  display: grid;
+  gap: 26px;
+}
+
+.section-module {
+  position: relative;
+}
+
+.section-node {
+  position: absolute;
+  left: -45px;
+  top: 8px;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #72839f;
+  border-radius: 999px;
+  background: #40506a;
+}
+
+.section-module h3 {
+  margin-bottom: 2px;
+  color: #b8d3f6;
+  font-size: 1.55rem;
+  font-weight: 600;
+}
+
+.section-module strong {
+  display: block;
+  color: var(--subtle);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.section-module p {
+  max-width: 76ch;
+  margin: 4px 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.section-module em {
+  display: block;
+  color: var(--subtle);
+  font-style: italic;
 }
 
 .division-hero p {
@@ -1067,6 +1379,10 @@ h3 {
     gap: 16px;
   }
 
+  .nav-menu {
+    left: 0;
+  }
+
   .module-layout {
     grid-template-columns: 1fr;
     padding: 0 20px;
@@ -1106,7 +1422,9 @@ h3 {
   .grid.three,
   .grid.two,
   .glossary-grid,
-  .timeline-group {
+  .timeline-group,
+  .section-card-grid,
+  .section-group {
     grid-template-columns: 1fr;
   }
 
@@ -1118,6 +1436,24 @@ h3 {
   .timeline-label {
     justify-items: start;
     text-align: left;
+  }
+
+  .section-group {
+    gap: 22px;
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .section-group-label {
+    text-align: left;
+  }
+
+  .section-node {
+    display: none;
+  }
+
+  .section-group-label span::before {
+    width: 72px;
   }
 
   .heatmap-months {
