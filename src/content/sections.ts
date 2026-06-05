@@ -40,7 +40,7 @@ export const guideSections: GuideSection[] = [
     problemCount: 10,
     groups: [
       {
-        title: "Getting Started",
+        title: "Начало работы",
         progress: "0/9",
         note: "Начните здесь, если вы только входите в спортивное программирование.",
         modules: [
@@ -55,7 +55,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Contributing",
+        title: "Участие в проекте",
         progress: "0/4",
         note: "Как добавлять материалы в guide.",
         modules: [
@@ -66,7 +66,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "General Resources",
+        title: "Общие ресурсы",
         progress: "0/6",
         note: "Полезно участникам любого уровня.",
         modules: [
@@ -79,7 +79,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Language-Specific",
+        title: "По языкам",
         progress: "0/1",
         note: "Настройка и особенности конкретных языков.",
         modules: [
@@ -93,7 +93,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "USA",
+        title: "США",
         progress: "0/4",
         note: "Информация, специфичная для USACO, лагерей и контестов США.",
         modules: [
@@ -120,7 +120,7 @@ export const guideSections: GuideSection[] = [
     problemCount: 107,
     groups: [
       {
-        title: "Getting Started",
+        title: "Начало работы",
         progress: "0/15",
         modules: [
           { title: "Оценка сложности", description: "Измерение числа операций, которые выполняет алгоритм." },
@@ -129,7 +129,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Complete Search",
+        title: "Полный перебор",
         progress: "0/29",
         modules: [
           { title: "Базовый полный перебор", description: "Задачи, где нужно пройти по всему пространству решений.", frequency: "Очень часто" },
@@ -137,7 +137,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Sorting & Sets",
+        title: "Сортировка и множества",
         progress: "0/18",
         modules: [
           { title: "Введение в сортировку", description: "Упорядочивание коллекций по возрастанию.", frequency: "Нечасто" },
@@ -145,7 +145,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Additional",
+        title: "Дополнительно",
         progress: "0/32",
         modules: [
           { title: "Разбор случаев", description: "Деление задачи на несколько случаев и отдельное решение каждого.", frequency: "Нечасто" },
@@ -156,7 +156,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Conclusion",
+        title: "Завершение",
         progress: "0/13",
         note: "Поздравляем: вы дошли до конца раздела.",
         modules: [
@@ -180,7 +180,7 @@ export const guideSections: GuideSection[] = [
     problemCount: 230,
     groups: [
       {
-        title: "Prefix Sums",
+        title: "Префиксные суммы",
         progress: "0/28",
         modules: [
           { title: "Введение в префиксные суммы", description: "Ответы на запросы суммы на отрезке за O(1) по фиксированному одномерному массиву.", frequency: "Довольно часто" },
@@ -188,7 +188,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Sorting & Searching",
+        title: "Сортировка и поиск",
         progress: "0/83",
         modules: [
           { title: "Два указателя", description: "Два монотонных указателя проходят по массиву и ищут пару индексов за линейное время.", frequency: "Нечасто" },
@@ -200,7 +200,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Graphs",
+        title: "Графы",
         progress: "0/62",
         note: "В большинстве контестов от Silver до Platinum есть хотя бы одна задача на графы.",
         modules: [
@@ -211,14 +211,14 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Additional Topics",
+        title: "Дополнительные темы",
         progress: "0/16",
         modules: [
           { title: "Введение в битовые операторы", description: "Шесть битовых операторов и типичные способы их применения.", frequency: "Довольно часто" },
         ],
       },
       {
-        title: "Conclusion",
+        title: "Завершение",
         progress: "0/41",
         note: "Поздравляем: вы дошли до конца раздела.",
         modules: [
@@ -241,7 +241,7 @@ export const guideSections: GuideSection[] = [
     problemCount: 389,
     groups: [
       {
-        title: "Math",
+        title: "Математика",
         progress: "0/41",
         modules: [
           { title: "Делимость", description: "Использование факта, что одно целое число делится на другое без остатка.", frequency: "Редко" },
@@ -250,7 +250,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Dynamic Programming",
+        title: "Динамическое программирование",
         progress: "0/98",
         note: "В большинстве Gold и Platinum контестов есть хотя бы одна задача на DP.",
         modules: [
@@ -264,7 +264,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Graphs",
+        title: "Графы",
         progress: "0/79",
         note: "В большинстве контестов от Silver до Platinum есть хотя бы одна задача на графы.",
         modules: [
@@ -276,7 +276,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Data Structures",
+        title: "Структуры данных",
         progress: "0/65",
         modules: [
           { title: "Дополнительные операции в отсортированных множествах", description: "Поиск следующего меньшего или большего элемента и работа с итераторами.", frequency: "Нечасто" },
@@ -287,7 +287,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Trees",
+        title: "Деревья",
         progress: "0/38",
         modules: [
           { title: "Техника Euler Tour", description: "Превращение дерева в массив для удобных запросов и обновлений поддеревьев.", frequency: "Нечасто" },
@@ -296,7 +296,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Additional Topics",
+        title: "Дополнительные темы",
         progress: "0/35",
         note: "Редко требуется.",
         modules: [
@@ -307,7 +307,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Conclusion",
+        title: "Завершение",
         progress: "0/33",
         note: "Поздравляем: вы дошли до конца раздела.",
         modules: [
@@ -331,7 +331,7 @@ export const guideSections: GuideSection[] = [
     problemCount: 269,
     groups: [
       {
-        title: "Range Queries",
+        title: "Запросы на отрезках",
         progress: "0/78",
         modules: [
           { title: "Дополнительные применения дерева отрезков", description: "Спуск по дереву отрезков и некоммутативные combiner-функции.", frequency: "Довольно часто" },
@@ -344,7 +344,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Trees",
+        title: "Деревья",
         progress: "0/75",
         modules: [
           { title: "Binary Jumping", description: "Эффективный поиск предков вершины.", frequency: "Довольно часто" },
@@ -356,7 +356,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Geometry",
+        title: "Геометрия",
         progress: "0/56",
         modules: [
           { title: "Геометрические примитивы", description: "Базовая настройка для геометрических задач.", frequency: "Редко" },
@@ -366,7 +366,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Misc. Topics",
+        title: "Разные темы",
         progress: "0/52",
         modules: [
           { title: "Принцип включений-исключений", description: "Техника подсчета, обобщающая формулу размера объединения n конечных множеств.", frequency: "Редко" },
@@ -377,7 +377,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Conclusion",
+        title: "Завершение",
         progress: "0/8",
         modules: [
           { title: "Дополнительная практика для USACO Platinum", description: "Финальные советы для Platinum и дополнительные тренировочные задачи." },
@@ -399,7 +399,7 @@ export const guideSections: GuideSection[] = [
     problemCount: 377,
     groups: [
       {
-        title: "Data Structures",
+        title: "Структуры данных",
         progress: "0/50",
         modules: [
           { title: "Max Suffix Query только со вставками", description: "Решение задачи USACO Gold - Springboards.", frequency: "Редко" },
@@ -411,7 +411,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Convexity",
+        title: "Выпуклость",
         progress: "0/33",
         modules: [
           { title: "LineContainer", description: "Convex containers.", frequency: "Редко" },
@@ -420,7 +420,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Graphs",
+        title: "Графы",
         progress: "0/84",
         modules: [
           { title: "Кратчайшие пути с отрицательными весами", description: "Возвращаемся к Bellman-Ford и Floyd-Warshall.", frequency: "Не встречалось" },
@@ -434,7 +434,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Dynamic Programming",
+        title: "Динамическое программирование",
         progress: "0/24",
         modules: [
           { title: "DP на деревьях: объединение поддеревьев", description: "Продвинутый прием для объединения состояний поддеревьев.", frequency: "Редко" },
@@ -443,7 +443,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Flows",
+        title: "Потоки",
         progress: "0/30",
         modules: [
           { title: "Максимальный поток", description: "Введение в максимальный поток, включая поток с нижними границами.", frequency: "Редко" },
@@ -453,7 +453,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Polynomials",
+        title: "Многочлены",
         progress: "0/12",
         modules: [
           { title: "Введение в FFT", description: "Быстрое умножение многочленов.", frequency: "Не встречалось" },
@@ -461,7 +461,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Strings",
+        title: "Строки",
         progress: "0/62",
         modules: [
           { title: "Поиск в строке", description: "Алгоритмы Кнута-Морриса-Пратта, Z-функция и несколько связанных тем.", frequency: "Редко" },
@@ -470,7 +470,7 @@ export const guideSections: GuideSection[] = [
         ],
       },
       {
-        title: "Misc. Topics",
+        title: "Разные темы",
         progress: "0/82",
         modules: [
           { title: "Расширенный алгоритм Евклида", description: "Нахождение коэффициентов Безу и работа с линейными диофантовыми уравнениями.", frequency: "Редко" },

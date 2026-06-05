@@ -11,7 +11,7 @@ export default function SectionsIndexPage() {
     <>
       <section className="section sections-index">
         <div className="container">
-          <p className="eyebrow">Sections</p>
+          <p className="eyebrow">Разделы</p>
           <h1>Разделы</h1>
           <p className="lede">
             Это русская версия структуры разделов USACO Guide. Сейчас страницы разделов являются полным переводом

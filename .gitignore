@@ -7,3 +7,5 @@ dist/
 .next-dev*.log
 .env*
 !.env.example
+.gstack/
+qa-browser-state/

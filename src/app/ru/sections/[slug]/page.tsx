@@ -38,7 +38,7 @@ export default async function SectionPage({ params }: RouteProps) {
       <section className={`section-hero section-hero-${section.accent}`}>
         <div className="container">
           <div className="section-breadcrumbs">
-            <Link href="/ru">Home</Link>
+            <Link href="/ru">Главная</Link>
             <span>›</span>
             <Link href="/ru/sections">Разделы</Link>
             <span>›</span>
@@ -52,8 +52,8 @@ export default async function SectionPage({ params }: RouteProps) {
             Источник: USACO Guide {section.label}
           </a>
           <div className="stats-grid">
-            <ProgressStats title="Modules Progress" total={section.moduleCount} />
-            <ProgressStats title="Problems Progress" total={section.problemCount} />
+            <ProgressStats title="Прогресс модулей" total={section.moduleCount} />
+            <ProgressStats title="Прогресс задач" total={section.problemCount} />
           </div>
         </div>
       </section>
@@ -103,23 +103,23 @@ function ProgressStats({ title, total }: { title: string; total: number }) {
       <div className="stat-circles">
         <div className="stat-item">
           <span className="stat-circle green">0</span>
-          <strong>Completed</strong>
+          <strong>Завершено</strong>
         </div>
         <div className="stat-item">
           <span className="stat-circle amber">0</span>
-          <strong>In Progress</strong>
+          <strong>В процессе</strong>
         </div>
         <div className="stat-item">
           <span className="stat-circle blue">0</span>
-          <strong>Skipped</strong>
+          <strong>Пропущено</strong>
         </div>
         <div className="stat-item">
           <span className="stat-circle white">{total}</span>
-          <strong>Not Started</strong>
+          <strong>Не начато</strong>
         </div>
       </div>
       <div className="progress-bar" aria-hidden="true" />
-      <p>{total} total</p>
+      <p>{total} всего</p>
     </article>
   );
 }
