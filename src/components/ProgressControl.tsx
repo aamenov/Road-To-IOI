@@ -27,7 +27,7 @@ export function ProgressControl({ moduleId }: { moduleId: string }) {
 
   return (
     <section className="progress-panel" aria-labelledby="progress-title">
-      <h2 id="progress-title">Прогресс</h2>
+      <h2 id="progress-title">Module Progress</h2>
       <div className="segmented" role="group" aria-label="Статус модуля">
         {states.map((item) => (
           <button

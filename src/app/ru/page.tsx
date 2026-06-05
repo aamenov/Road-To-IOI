@@ -3,75 +3,121 @@ import { modules } from "@/content/modules";
 import { ModuleCard } from "@/components/ModuleCard";
 
 const featuredModules = modules.slice(0, 3);
+const heatmapCells = Array.from({ length: 182 }, (_, index) => index);
 
 export default function RussianHomePage() {
   return (
     <>
-      <section className="hero">
-        <div className="hero-inner">
-          <p className="eyebrow">Казахстан · олимпиадное программирование</p>
-          <h1>Road To IOI</h1>
-          <p className="lede">
-            Русскоязычный маршрут по competitive programming для школьников: от первых задач до серьезной подготовки к
-            республиканским олимпиадам и IOI-стилю.
-          </p>
-          <div className="actions">
-            <Link className="button" href="/ru/start">
-              Начать здесь
-            </Link>
-            <Link className="secondary-button" href="/ru/curriculum">
-              Смотреть учебный план
-            </Link>
-          </div>
-        </div>
-      </section>
+      <section className="dashboard-page">
+        <p className="signin-banner">
+          Прогресс хранится локально. <Link href="/ru/start">Выберите стартовый путь</Link>
+        </p>
 
-      <section className="section">
-        <div className="container">
-          <p className="eyebrow">Три входа в один глубокий маршрут</p>
+        <div className="welcome-card">
+          <div>
+            <h1>Добро пожаловать!</h1>
+            <p>Продолжите с того места, где остановились. Первый рекомендуемый модуль — «Оценка сложности».</p>
+          </div>
+          <Link className="button" href="/ru/modules/time-complexity">
+            Продолжить: Оценка сложности
+          </Link>
+        </div>
+
+        <section className="dashboard-section" aria-labelledby="activity-title">
+          <h2 id="activity-title">Activity</h2>
+          <div className="activity-card">
+            <div className="heatmap-months" aria-hidden="true">
+              <span>Sep</span>
+              <span>Oct</span>
+              <span>Nov</span>
+              <span>Dec</span>
+              <span>Jan</span>
+              <span>Feb</span>
+              <span>Mar</span>
+              <span>Apr</span>
+              <span>May</span>
+            </div>
+            <div className="activity-grid" aria-label="Карта учебной активности">
+              {heatmapCells.map((cell) => (
+                <span key={cell} />
+              ))}
+            </div>
+            <p>Карта активности будет заполняться по мере прохождения модулей.</p>
+          </div>
+        </section>
+
+        <section className="dashboard-section" aria-labelledby="stats-title">
+          <h2 id="stats-title">Statistics</h2>
+          <div className="stats-grid">
+            <ProgressStats title="Modules Progress - Bronze" total="6" />
+            <ProgressStats title="Problems Progress - Bronze" total="7" />
+          </div>
+        </section>
+
+        <section className="dashboard-section" aria-labelledby="paths-title">
+          <h2 id="paths-title">Sections</h2>
           <div className="grid three">
             <article className="path-card">
-              <h2>Начинающим</h2>
-              <p>Если синтаксис уже знаком, но олимпиадные условия пока выглядят чужими.</p>
-              <Link href="/ru/start">Выбрать старт</Link>
+              <h3>General</h3>
+              <p>Старт, ввод/вывод, формат контестов и терминология.</p>
+              <Link href="/ru/start">Начать</Link>
+            </article>
+            <article className="path-card bronze-card">
+              <h3>Bronze</h3>
+              <p>Сложность, симуляция, перебор и первые системные алгоритмические темы.</p>
+              <Link href="/ru/curriculum">Открыть Bronze</Link>
             </article>
             <article className="path-card">
-              <h2>Региональный уровень</h2>
-              <p>Если простые задачи решаются, но алгоритмы еще не выстроены в систему.</p>
-              <Link href="/ru/curriculum">Перейти к Bronze</Link>
-            </article>
-            <article className="path-card">
-              <h2>IOI-направление</h2>
-              <p>Если нужна длинная траектория к продвинутым темам без упрощения материала.</p>
-              <Link href="/ru/olympiad-map">Открыть карту</Link>
+              <h3>Advanced</h3>
+              <p>Будущая траектория для республиканского и IOI-style уровня.</p>
+              <Link href="/ru/olympiad-map">Посмотреть карту</Link>
             </article>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section alt">
-        <div className="container">
-          <p className="eyebrow">Первые модули</p>
-          <h2>Начальный путь уже имеет рабочий скелет</h2>
+        <section className="dashboard-section" aria-labelledby="modules-title">
+          <h2 id="modules-title">Последние модули</h2>
           <div className="grid three">
             {featuredModules.map((module) => (
               <ModuleCard module={module} key={module.id} />
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section">
-        <div className="container narrow">
-          <p className="eyebrow">Прозрачное происхождение</p>
-          <h2>Сайт не выдает себя за официальный USACO Guide</h2>
+        <section className="dashboard-section source-strip">
+          <h2>Атрибуция</h2>
           <p>
             Материалы строятся как отдельный русскоязычный проект с явной атрибуцией USACO Guide и лицензией CC
             BY-NC-SA 4.0. У каждого модуля есть ссылка на источник и статус перевода.
           </p>
           <Link href="/ru/attribution">Атрибуция и лицензия</Link>
-        </div>
+        </section>
       </section>
     </>
+  );
+}
+
+function ProgressStats({ title, total }: { title: string; total: string }) {
+  const items = [
+    { label: "Completed", value: "0", tone: "green" },
+    { label: "In Progress", value: "0", tone: "amber" },
+    { label: "Skipped", value: "0", tone: "blue" },
+    { label: "Not Started", value: total, tone: "white" },
+  ];
+
+  return (
+    <article className="stats-card">
+      <h3>{title}</h3>
+      <div className="stat-circles">
+        {items.map((item) => (
+          <div className="stat-item" key={item.label}>
+            <span className={`stat-circle ${item.tone}`}>{item.value}</span>
+            <strong>{item.label}</strong>
+          </div>
+        ))}
+      </div>
+      <div className="progress-bar" aria-hidden="true" />
+      <p>{total} total</p>
+    </article>
   );
 }

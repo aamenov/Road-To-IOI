@@ -274,13 +274,22 @@ Empty states must be useful, not dead ends. Each empty state needs one primary n
 
 Design review rating before this section: 4/10. The plan had product direction but no visual system. The v1 UI should feel like a serious educational reference: calm, precise, and trustworthy.
 
-Classifier: hybrid. The landing page is brand-forward, while curriculum, modules, glossary, and teacher pages are app/documentation UI.
+Classifier: USACO Guide-inspired dark documentation app. The product should feel structurally close to USACO Guide: dark navigation, dense app surfaces, progress cards, division pages, timeline-like curriculum lists, left-rail module navigation, and right-side table of contents on module pages. It must remain separately branded as Road To IOI and must not imply official USACO Guide endorsement.
+
+Reference screenshots supplied on 2026-06-04 establish the target visual language:
+
+- Dark navy top navigation with logo, section navigation, search/login/settings affordances.
+- Dashboard home with local sign-in/progress messaging, a wide welcome card, activity heatmap, and statistics cards.
+- Bronze division page with a strong bronze hero band, progress cards, and a vertical topic timeline.
+- Module pages with a fixed left curriculum rail, central reading column, right table of contents, compact progress control, dark resource/source cards, code blocks, and quiz/progress areas.
+
+Implementation rule: match the interaction and information architecture patterns, not the exact USACO brand mark or official naming. Road To IOI remains the visible brand.
 
 Hard rules:
 
 - Avoid generic SaaS feature grids as the first impression.
 - Avoid purple/blue gradient startup styling.
-- Avoid decorative icon-in-circle cards.
+- Avoid generic decorative icon-in-circle cards. A functional circular graph-like brand mark is acceptable because it mirrors the reference navigation pattern while staying separately branded.
 - Avoid centered everything.
 - Avoid oversized rounded cards as the dominant layout.
 - Use cards only for actual path choices, module tiles, and glossary entries.
@@ -289,16 +298,17 @@ Hard rules:
 
 Typography:
 
-- Choose real typefaces with strong Cyrillic support.
-- Do not use `Inter`, `Roboto`, `Arial`, `system-ui`, or `-apple-system` as the primary visual identity.
-- Body text must be at least 16px.
+- Use a modern sans-serif documentation stack with strong Cyrillic support.
+- Prefer dense, readable UI typography over editorial serif headings.
+- Body text must be at least 16px; module reading text should be larger than navigation text.
 - Long-form module text should use a comfortable reading measure, roughly 65-80 characters per line on desktop.
 
 Color:
 
 - Define CSS variables for the color system.
-- Use a restrained palette suitable for educational content.
-- Use one clear accent color for actions and progress.
+- Primary palette: near-black page background, dark navy navigation and cards, muted blue-gray secondary text, bright blue links/actions.
+- Division accent colors are allowed, especially bronze/rust for Bronze pages.
+- Use status colors for progress: green completed, amber in progress, blue skipped, white not started.
 - Body text contrast must meet at least WCAG AA contrast.
 
 Motion:
