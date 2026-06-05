@@ -65,9 +65,9 @@ input {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 32px;
+  gap: clamp(18px, 2.3vw, 32px);
   min-height: 80px;
-  padding: 0 clamp(20px, 10vw, 192px);
+  padding: 0 clamp(20px, 7vw, 192px);
   background: var(--nav);
   border-bottom: 1px solid #0b1220;
 }
@@ -599,8 +599,8 @@ h3 {
 
 .module-layout {
   display: grid;
-  grid-template-columns: 400px minmax(0, 1fr) 300px;
-  gap: 42px;
+  grid-template-columns: minmax(300px, 400px) minmax(0, 1040px) minmax(220px, 300px);
+  gap: clamp(28px, 3vw, 42px);
   min-height: calc(100vh - 80px);
 }
 
@@ -735,6 +735,7 @@ h3 {
   margin-bottom: 24px;
   padding: 20px 28px;
   background: var(--panel-dark);
+  scroll-margin-top: 112px;
 }
 
 .source-note h2,
@@ -792,6 +793,12 @@ h3 {
   margin: 36px 0;
   color: var(--text);
   font-size: 1.2rem;
+}
+
+.content-flow > section,
+.callout,
+.code-block {
+  scroll-margin-top: 112px;
 }
 
 .content-flow > * + * {
@@ -934,7 +941,7 @@ h3 {
   padding: 0 0 0 18px;
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1240px) {
   .site-header {
     grid-template-columns: 1fr;
     gap: 6px;

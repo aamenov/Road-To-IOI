@@ -6,9 +6,11 @@ import { ProgressControl } from "./ProgressControl";
 
 export function ModuleRenderer({ module }: { module: ModuleInfo }) {
   const orderedModules = [...modules].sort((a, b) => a.path.order - b.path.order);
-  const sections = module.sections
-    .map((section) => ("title" in section ? section.title : undefined))
-    .filter(Boolean) as string[];
+  const sections = module.sections.flatMap((section, index) =>
+    "title" in section && section.title
+      ? [{ href: `#${sectionAnchor(section.title, index)}`, title: section.title }]
+      : [],
+  );
 
   return (
     <div className="module-layout">
@@ -98,13 +100,15 @@ export function ModuleRenderer({ module }: { module: ModuleInfo }) {
 
         <div className="content-flow">
           {module.sections.map((section, index) => {
+            const sectionId = "title" in section && section.title ? sectionAnchor(section.title, index) : undefined;
+
             if (section.type === "paragraph") {
               return <p key={index}>{section.body}</p>;
             }
 
             if (section.type === "list") {
               return (
-                <section key={index}>
+                <section id={sectionId} key={index}>
                   {section.title ? <h2>{section.title}</h2> : null}
                   <ul>
                     {section.items.map((item) => (
@@ -117,7 +121,7 @@ export function ModuleRenderer({ module }: { module: ModuleInfo }) {
 
             if (section.type === "callout") {
               return (
-                <aside className={`callout ${section.tone}`} key={index}>
+                <aside className={`callout ${section.tone}`} id={sectionId} key={index}>
                   <h2>{section.title}</h2>
                   <p>{section.body}</p>
                 </aside>
@@ -125,7 +129,7 @@ export function ModuleRenderer({ module }: { module: ModuleInfo }) {
             }
 
             return (
-              <figure className="code-block" key={index}>
+              <figure className="code-block" id={sectionId} key={index}>
                 {section.title ? <figcaption>{section.title}</figcaption> : null}
                 <pre>
                   <code>{section.code}</code>
@@ -166,8 +170,8 @@ export function ModuleRenderer({ module }: { module: ModuleInfo }) {
         <a href="#source-note-title">Источник</a>
         {module.prerequisites.length > 0 ? <a href="#prerequisites">Перед модулем</a> : null}
         {sections.map((section) => (
-          <a href="#" key={section}>
-            {section}
+          <a href={section.href} key={section.href}>
+            {section.title}
           </a>
         ))}
         <a href="#module-terms">Термины</a>
@@ -175,6 +179,15 @@ export function ModuleRenderer({ module }: { module: ModuleInfo }) {
       </aside>
     </div>
   );
+}
+
+function sectionAnchor(title: string, index: number) {
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9а-яё]+/gi, "-")
+    .replace(/^-+|-+$/g, "");
+
+  return `section-${index}-${slug || "content"}`;
 }
 
 function SourceNote({ module }: { module: ModuleInfo }) {
