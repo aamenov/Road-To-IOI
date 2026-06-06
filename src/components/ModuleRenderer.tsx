@@ -6,6 +6,11 @@ import { ProgressControl } from "./ProgressControl";
 
 export function ModuleRenderer({ module }: { module: ModuleInfo }) {
   const orderedModules = [...modules].sort((a, b) => a.path.order - b.path.order);
+  const relatedModules = orderedModules.filter((item) => item.path.track === module.path.track);
+  const currentIndex = relatedModules.findIndex((item) => item.id === module.id);
+  const previousModule = currentIndex > 0 ? relatedModules[currentIndex - 1] : undefined;
+  const nextModule = currentIndex >= 0 && currentIndex < relatedModules.length - 1 ? relatedModules[currentIndex + 1] : undefined;
+  const sectionHref = getSectionHref(module);
   const sections = module.sections.flatMap((section, index) =>
     "title" in section && section.title
       ? [{ href: `#${sectionAnchor(section.title, index)}`, title: section.title }]
@@ -23,21 +28,11 @@ export function ModuleRenderer({ module }: { module: ModuleInfo }) {
           </span>
           <strong>Road To IOI</strong>
         </Link>
-        <p className="division-select">Bronze⌄</p>
+        <p className="division-select">{module.path.label}⌄</p>
         <nav>
-          <h2>Getting Started</h2>
+          <h2>Модули раздела</h2>
           <ol>
-            {orderedModules.slice(0, 3).map((item) => (
-              <li key={item.id}>
-                <Link className={item.id === module.id ? "current" : ""} href={`/ru/modules/${item.slug}`}>
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ol>
-          <h2>Complete Search</h2>
-          <ol>
-            {orderedModules.slice(3).map((item) => (
+            {relatedModules.map((item) => (
               <li key={item.id}>
                 <Link className={item.id === module.id ? "current" : ""} href={`/ru/modules/${item.slug}`}>
                   {item.title}
@@ -49,15 +44,15 @@ export function ModuleRenderer({ module }: { module: ModuleInfo }) {
       </aside>
       <article className="module-article">
         <div className="module-topline">
-          <Link href="/ru/sections/bronze">‹ Prev</Link>
+          {previousModule ? <Link href={`/ru/modules/${previousModule.slug}`}>‹ Предыдущий</Link> : <Link href={sectionHref}>‹ Раздел</Link>}
           <div>
-            <Link href="/ru">Home</Link>
+            <Link href="/ru">Главная</Link>
             <span>›</span>
-            <Link href="/ru/sections/bronze">Bronze</Link>
+            <Link href={sectionHref}>{module.path.label}</Link>
             <span>›</span>
             <span>{module.title}</span>
           </div>
-          <Link href="/ru/sections/bronze">Next ›</Link>
+          {nextModule ? <Link href={`/ru/modules/${nextModule.slug}`}>Следующий ›</Link> : <Link href={sectionHref}>Раздел ›</Link>}
         </div>
 
         <section className="signin-card module-session">
@@ -70,9 +65,9 @@ export function ModuleRenderer({ module }: { module: ModuleInfo }) {
 
         <div className="module-heading">
           <div>
-            <p className="frequency-dots" aria-label="Very frequent">•••• <span>Very Frequent</span></p>
+            <p className="frequency-dots" aria-label="Частота темы">•••• <span>Частота зависит от темы</span></p>
             <h1>{module.title}</h1>
-            <p className="authors">Source: {module.source.title}</p>
+            <p className="authors">Источник: {module.source.title}</p>
             <p className="lede">{module.description}</p>
           </div>
         </div>
@@ -175,13 +170,13 @@ export function ModuleRenderer({ module }: { module: ModuleInfo }) {
             <li>Сколько времени ученик потратил на решение.</li>
           </ol>
           <div className="module-progress-footer">
-            <strong>Module Progress:</strong>
+            <strong>Прогресс модуля:</strong>
             <ProgressControl moduleId={module.id} />
           </div>
         </section>
       </article>
       <aside className="toc-panel" aria-label="Содержание">
-        <h2>Table of Contents</h2>
+        <h2>Содержание</h2>
         <a href="#source-note-title">Источник</a>
         {module.prerequisites.length > 0 ? <a href="#prerequisites">Перед модулем</a> : null}
         {sections.map((section) => (
@@ -205,25 +200,33 @@ function sectionAnchor(title: string, index: number) {
   return `section-${index}-${slug || "content"}`;
 }
 
+function getSectionHref(module: ModuleInfo) {
+  if (["general", "bronze", "silver", "gold", "platinum", "advanced"].includes(module.path.track)) {
+    return `/ru/sections/${module.path.track}`;
+  }
+
+  return "/ru/sections/bronze";
+}
+
 function SourceNote({ module }: { module: ModuleInfo }) {
   return (
     <section className="source-note" aria-labelledby="source-note-title">
       <h2 id="source-note-title">Источник и статус перевода</h2>
       <div className="resource-table">
         <a href={module.source.url} rel="noreferrer" target="_blank">
-          <span>Source</span>
+          <span>Источник</span>
           <strong>{module.source.title}</strong>
-          <em>original module</em>
+          <em>исходный модуль</em>
         </a>
         <span>
-          <span>License</span>
+          <span>Лицензия</span>
           <strong>{module.license}</strong>
-          <em>share alike</em>
+          <em>с сохранением условий</em>
         </span>
         <span>
-          <span>Status</span>
+          <span>Статус</span>
           <strong>{module.translation.status}</strong>
-          <em>translation pipeline</em>
+          <em>процесс перевода</em>
         </span>
       </div>
     </section>

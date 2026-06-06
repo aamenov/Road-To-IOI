@@ -69,7 +69,7 @@ export default async function SectionPage({ params }: RouteProps) {
           </div>
 
           <div className="section-timeline">
-            {section.groups.map((group) => (
+            {section.groups.map((group, groupIndex) => (
               <section className="section-group" key={group.title}>
                 <div className="section-group-label">
                   <h2>{group.title}</h2>
@@ -77,14 +77,18 @@ export default async function SectionPage({ params }: RouteProps) {
                   {group.note ? <p>{group.note}</p> : null}
                 </div>
                 <div className="section-module-list">
-                  {group.modules.map((module) => (
-                    <article className="section-module" key={`${group.title}-${module.title}`}>
+                  {group.modules.map((module, moduleIndex) => (
+                    <Link
+                      className="section-module"
+                      href={`/ru/modules/${section.slug}-${groupIndex + 1}-${moduleIndex + 1}`}
+                      key={`${group.title}-${module.title}`}
+                    >
                       <span className="section-node" aria-hidden="true" />
                       <h3>{module.title}</h3>
                       {module.frequency ? <strong>{module.frequency}</strong> : null}
                       <p>{module.description}</p>
                       <em>Перевод обзорной строки · источник USACO Guide</em>
-                    </article>
+                    </Link>
                   ))}
                 </div>
               </section>

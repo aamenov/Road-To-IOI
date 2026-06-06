@@ -1,6 +1,6 @@
 export type Locale = "ru";
 
-export type Track = "beginner" | "bronze" | "advanced" | "ioi";
+export type Track = "beginner" | "general" | "bronze" | "silver" | "gold" | "platinum" | "advanced" | "ioi";
 
 export type TranslationStatus = "draft" | "reviewed" | "ready";
 

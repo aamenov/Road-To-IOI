@@ -1,4 +1,5 @@
 import type { ModuleInfo } from "./types";
+import { guideSections, type GuideSectionSlug } from "./sections";
 
 const ccLicense = "CC BY-NC-SA 4.0" as const;
 
@@ -12,7 +13,7 @@ const baseTranslation = {
   studentTested: false,
 };
 
-export const modules: ModuleInfo[] = [
+const handAuthoredModules: ModuleInfo[] = [
   {
     id: "contest-workflow",
     slug: "contest-workflow",
@@ -282,6 +283,74 @@ export const modules: ModuleInfo[] = [
     ],
   },
 ];
+
+const sectionTrackLabels: Record<GuideSectionSlug, string> = {
+  general: "General",
+  bronze: "Bronze",
+  silver: "Silver",
+  gold: "Gold",
+  platinum: "Platinum",
+  advanced: "Advanced",
+};
+
+const sectionModuleDrafts: ModuleInfo[] = guideSections.flatMap((section, sectionIndex) =>
+  section.groups.flatMap((group, groupIndex) =>
+    group.modules.map((module, moduleIndex) => {
+      const order = (sectionIndex + 1) * 1000 + (groupIndex + 1) * 100 + moduleIndex + 1;
+      const id = `${section.slug}-${groupIndex + 1}-${moduleIndex + 1}`;
+
+      return {
+        id,
+        slug: id,
+        title: module.title,
+        description: module.description,
+        language: "ru",
+        path: { track: section.slug, order, label: sectionTrackLabels[section.slug] },
+        source: {
+          title: `USACO Guide content: ${section.label} / ${module.title}`,
+          url: "https://github.com/cpinitiative/usaco-guide/tree/master/content",
+          repoPath: "content",
+          sourceCommit: "master",
+        },
+        license: ccLicense,
+        translation: baseTranslation,
+        prerequisites: [],
+        glossaryTerms: ["algorithm", "complexity", "implementation"],
+        problems: [
+          {
+            title: `Практика из раздела ${section.label}`,
+            judge: "USACO Guide",
+            url: section.sourceUrl,
+            difficulty: "intro",
+          },
+        ],
+        sections: [
+          {
+            type: "paragraph",
+            body: module.description,
+          },
+          {
+            type: "list",
+            title: "Что изучить",
+            items: [
+              `Тема находится в группе «${group.title}» раздела ${section.label}.`,
+              module.frequency ? `Частота в задачах: ${module.frequency}.` : "Тема входит в основной маршрут этого раздела.",
+              "Сначала разберите идею на маленьких примерах, затем переходите к задачам из источника.",
+            ],
+          },
+          {
+            type: "callout",
+            tone: "explanation",
+            title: "Статус перевода",
+            body: "Это русская учебная карточка модуля на основе структуры USACO Guide. Полный перенос примеров, таблиц, ресурсов и задач из исходного MDX будет добавляться поверх этой страницы.",
+          },
+        ],
+      } satisfies ModuleInfo;
+    }),
+  ),
+);
+
+export const modules: ModuleInfo[] = [...handAuthoredModules, ...sectionModuleDrafts];
 
 export function getModuleBySlug(slug: string) {
   return modules.find((module) => module.slug === slug);
